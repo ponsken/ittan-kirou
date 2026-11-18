@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>いったん切ろう｜家族で詐欺対策</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e5f8ef;color:#153d31;font:18px/1.7 system-ui,sans-serif}
+main{max-width:620px;margin:auto;padding:32px 18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px;font-size:14px;font-weight:700}
+.badge{background:#bcebd7;border-radius:30px;padding:4px 12px}
+article{background:#fff;border:1px solid #bfdfd1;border-radius:24px;padding:clamp(20px,5vw,40px);box-shadow:0 12px 40px #153d3110}
+h1{font-size:clamp(30px,8vw,46px);line-height:1.2;margin:8px 0 20px}
+h1:focus{outline:none}
+small{font-weight:700;color:#326352}
+blockquote{margin:16px 0;padding:16px;background:#e5f8ef;border-left:4px solid #498971;border-radius:0 12px 12px 0}
+button{display:block;width:100%;margin-top:12px;padding:14px 16px;border:2px solid #a5d5c3;border-radius:12px;background:#f4fcf8;color:#153d31;font:inherit;font-weight:700;cursor:pointer;text-align:left}
+button.primary{background:#185842;color:#fff;border-color:#185842;text-align:center}
+button:focus-visible{outline:3px solid #216c52;outline-offset:3px}
+footer{margin:18px 6px;color:#326352;font-size:14px}
+
+.choice{display:block;width:100%;margin-top:12px;padding:14px 16px;border:2px solid #a5d5c3;border-radius:12px;background:#f4fcf8;color:#153d31;font:inherit;font-weight:700;text-align:left;text-decoration:none}
+.choice.primary{background:#185842;color:#fff;border-color:#185842;text-align:center}
+.choice:focus-visible{outline:3px solid #216c52;outline-offset:3px}
+.scene{display:none;scroll-margin-top:20px}
+#start{display:block}
+.scene:target{display:block}
+.scene:target ~ #start{display:none}
+.warning-box{background:#fff1f0;border:2px solid #c13730;border-left:6px solid #b42318;border-radius:14px;padding:18px;margin-bottom:20px;color:#8a2018}
+.warning-box h1,.warning-box small{color:#8a2018}
+.warning-label{display:block;font-size:20px;margin-bottom:12px;color:#a1251b}
+
+/* Readable rhythm for short conversations and explanations. */
+body{line-height:1.85;letter-spacing:.025em}
+h1{line-height:1.45;letter-spacing:.015em;margin:12px 0 26px;font-size:clamp(28px,6.8vw,40px);overflow-wrap:anywhere}
+p{margin:0 0 1.15em;line-break:strict;overflow-wrap:anywhere}
+small{display:block;line-height:1.6;letter-spacing:.05em}
+blockquote{margin:24px 0;padding:18px 20px;line-height:1.9}
+.choice{line-height:1.65;padding:16px 18px;margin-top:14px}
+.warning-box{padding:22px 20px}
+.warning-box p:last-child{margin-bottom:0}
+.scene > .choice:first-of-type{margin-top:28px}
+footer p{margin-bottom:12px}
+@media(max-width:420px){main{padding:22px 14px}article{padding:24px 20px}blockquote{padding:16px}h1{margin-bottom:22px}}
+</style>
+<main>
+<header><span>家族で詐欺対策</span><span class="badge">テスト版</span></header>
+<article><section id="call" class="scene"><small>場面 1 / 3</small><h1>自宅の電話が鳴った</h1><blockquote>「警察です。あなた名義の口座が事件に使われています。詳しくはLINEでお話しします」</blockquote><p>あなたなら、どうしますか？</p><a class="choice" href="#line">指示どおりLINEを追加する</a>
+<a class="choice" href="#number">所属と折り返し番号を聞く</a>
+<a class="choice" href="#verify">いったん電話を切る</a></section>
+<section id="line" class="scene"><small>場面 2 / 3</small><h1>LINEに移るよう急かされた</h1><blockquote>「急いでいます。電話をつないだまま追加してください」</blockquote><p>この時点でも、会話を止められます。</p><a class="choice" href="#verify">いったん電話を切る</a></section>
+<section id="number" class="scene"><small>場面 2 / 3</small><h1>折り返し番号を教えられた</h1><p>相手が教えた番号にかけると、同じ相手につながる可能性があります。どう確かめますか？</p><a class="choice" href="#retry">教えられた番号にかける</a>
+<a class="choice" href="#police3">自分で警察署の代表番号を調べてかける</a></section>
+<section id="retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>確認先を選び直す</small><h1>番号は自分で調べる</h1><p>相手から聞いた番号だけでは、相手の身元を確かめられません。</p>
+<p>確認先を自分で調べるところからやってみましょう。</p></div><a class="choice primary" href="#verify">確認先を選び直す</a></section>
+<section id="verify" class="scene"><small>場面 2 / 3</small><h1>電話を切ったあと</h1><p>相手が本当に警察だったか、どの番号で確かめますか？</p><a class="choice" href="#retry">相手から教えられた番号</a>
+<a class="choice" href="#police3">自分で調べた警察署の代表番号</a></section>
+<section id="prosecutor" class="scene"><small>偽検察編 · 場面 1 / 3</small><h1>「誰にも話さないで」</h1><p>検察を名乗る人から電話がかかってきました。</p><blockquote>「捜査のことは、家族にも話さないでください」</blockquote><p>どうしますか？</p><a class="choice" href="#prosecutorPause">言われたとおり、一人で抱える</a>
+<a class="choice" href="#prosecutorConsult">いったん電話を切る</a></section>
+<section id="prosecutorPause" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>ここからでも切れます</small><h1>一人で決めなくて大丈夫</h1><p>相手が本物か分からないときは、その場で返事を決めず、いったん会話を止めて考えられます。</p></div><a class="choice primary" href="#prosecutorConsult">いったん電話を切る</a></section>
+<section id="prosecutorConsult" class="scene"><small>偽検察編 · 場面 2 / 3</small><h1>電話を切ったあと</h1><p>相手の話が気になっています。次にどうしますか？</p><a class="choice" href="#prosecutorPause">相手からの電話を一人で待つ</a>
+<a class="choice" href="#prosecutor3">信頼できる人に話して、一緒に確認する</a></section>
+<section id="prosecutorDone" class="scene"><small>練習完了</small><h1>切って、話して、一緒に確かめる</h1><p>相手が本物か分からない段階でも、身近な人に話すことから始められます。</p><blockquote>「検察を名乗る人から電話があって、誰にも言うなって言われた。一緒に確認してくれる？」</blockquote><p>もしこういう電話が来たら、最初に誰に相談しますか？</p><a class="choice primary" href="#prosecutor">もう一度練習する</a>
+<a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="done" class="scene"><small>練習完了</small><h1>切って、調べて、確かめる</h1><p>会話を止めて、自分で調べた番号で確認できました。</p><blockquote>「いったん切って、こちらから確認します」</blockquote><p>この一言を、家族と声に出して練習してみましょう。</p><a class="choice primary" href="#call">もう一度練習する</a>
+<a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="police3" class="scene"><small>警察を名乗る電話 · 場面 3 / 3</small><h1>警察手帳の画像が届いた</h1><p>「これが身分証です。信用してください」と画像を見せられました。どう判断しますか？</p><a class="choice" href="#police3-retry">画像があるので本物だと判断する</a><a class="choice" href="#police3-ok">画像だけで判断せず、自分で調べた警察署に確認する</a><a class="choice" href="#police3-retry">相手の話し方が丁寧なら信用する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="police3-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>警察手帳や逮捕状の画像を使う詐欺があります。見た目に押されても、その相手とのやり取りを止めて、独立した窓口で確認しましょう。</p><a class="choice primary" href="#done">次へ</a></section>
+<section id="police3-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>警察手帳や逮捕状の画像を使う詐欺があります。見た目に押されても、その相手とのやり取りを止めて、独立した窓口で確認しましょう。</p></div><a class="choice primary" href="#police3">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="prosecutor3" class="scene"><small>検察を名乗る電話 · 場面 3 / 3</small><h1>「お金を移せば疑いが晴れる」</h1><p>検察を名乗る相手が「資産調査のため、指定口座にお金を移してください」と言います。どうしますか？</p><a class="choice" href="#prosecutor3-retry">一部だけ送って様子を見る</a><a class="choice" href="#prosecutor3-retry">後で返すと言うので送る</a><a class="choice" href="#prosecutor3-ok">送金を止めて、家族と一緒に公的な窓口で確認する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="prosecutor3-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>口座調査や疑いを晴らすことを理由に送金させる手口があります。</p>
+<p>相手が紹介する連絡先だけに頼らず、自分で調べた窓口で確認しましょう。</p><a class="choice primary" href="#prosecutorDone">次へ</a></section>
+<section id="prosecutor3-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>口座調査や疑いを晴らすことを理由に送金させる手口があります。</p>
+<p>相手が紹介する連絡先だけに頼らず、自分で調べた窓口で確認しましょう。</p></div><a class="choice primary" href="#prosecutor3">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city1" class="scene"><small>市役所を名乗る電話 · 場面 1 / 3</small><h1>「還付金は今日までです」</h1><p>「医療費の還付金があります。今日中に手続きしないと受け取れません」と電話が来ました。</p>
+<p>どうしますか？</p><a class="choice" href="#city1-retry">期限が心配なので、その場で手続きを始める</a><a class="choice" href="#city1-ok">いったん切って、自分で市役所の担当窓口を調べる</a><a class="choice" href="#city1-retry">相手が教えた番号だけで確かめる</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city1-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>期限を強調して焦らせる手口があります。その場で判断せず、自治体の公式サイトや手元の広報紙で窓口を調べて確認しましょう。</p><a class="choice primary" href="#city2">次へ</a></section>
+<section id="city1-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>期限を強調して焦らせる手口があります。その場で判断せず、自治体の公式サイトや手元の広報紙で窓口を調べて確認しましょう。</p></div><a class="choice primary" href="#city1">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city2" class="scene"><small>市役所を名乗る電話 · 場面 2 / 3</small><h1>「ATMで受け取れます」</h1><p>「携帯電話を持ってATMへ。操作方法は電話で案内します」と言われました。どうしますか？</p><a class="choice" href="#city2-retry">案内を受けながらATMを操作する</a><a class="choice" href="#city2-retry">振込ボタンを押さなければ大丈夫だと思って行く</a><a class="choice" href="#city2-ok">ATMへ行かず、電話を切って相談する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city2-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>ATMを操作して還付金を受け取ることはできません。</p>
+<p>電話をつないだまま操作するよう言われても、いったん切って相談しましょう。</p><a class="choice primary" href="#city3">次へ</a></section>
+<section id="city2-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>ATMを操作して還付金を受け取ることはできません。</p>
+<p>電話をつないだまま操作するよう言われても、いったん切って相談しましょう。</p></div><a class="choice primary" href="#city2">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city3" class="scene"><small>市役所を名乗る電話 · 場面 3 / 3</small><h1>「銀行担当につなぎます」</h1><p>「こちらから銀行の担当者に電話をつなぎます」と言われました。どう確認しますか？</p><a class="choice" href="#city3-ok">切って、通帳などで自分で調べた銀行の窓口に連絡する</a><a class="choice" href="#city3-retry">別の担当に代わったので信用する</a><a class="choice" href="#city3-retry">二人の説明が同じなら信用する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="city3-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>複数の役を演じて信用させることがあります。相手がつないだ先も同じグループかもしれません。</p>
+<p>確認先は自分で調べましょう。</p><a class="choice primary" href="#cityDone">次へ</a></section>
+<section id="city3-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>複数の役を演じて信用させることがあります。相手がつないだ先も同じグループかもしれません。</p>
+<p>確認先は自分で調べましょう。</p></div><a class="choice primary" href="#city3">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor1" class="scene"><small>点検業者を名乗る訪問 · 場面 1 / 3</small><h1>「給湯器の点検に来ました」</h1><p>頼んでいない業者が突然訪問し、「すぐ終わるので開けてください」と言います。どうしますか？</p><a class="choice" href="#vendor1-retry">制服を着ているので家に入れる</a><a class="choice" href="#vendor1-ok">ドアを開けず、依頼した点検か契約先に確認する</a><a class="choice" href="#vendor1-retry">無料なら点検してもらう</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor1-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>突然の訪問には、まずドア越しやインターホンで対応しましょう。</p>
+<p>必要な点検かは、契約先のガス会社やメーカーなどに自分で確認できます。</p><a class="choice primary" href="#vendor2">次へ</a></section>
+<section id="vendor1-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>突然の訪問には、まずドア越しやインターホンで対応しましょう。</p>
+<p>必要な点検かは、契約先のガス会社やメーカーなどに自分で確認できます。</p></div><a class="choice primary" href="#vendor1">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor2" class="scene"><small>点検業者を名乗る訪問 · 場面 2 / 3</small><h1>「今すぐ交換しないと危険」</h1><p>「今日契約すれば安くします。今すぐ決めてください」と迫られました。どうしますか？</p><a class="choice" href="#vendor2-retry">不安なのでその場で契約する</a><a class="choice" href="#vendor2-retry">値引きの期限までに急いで決める</a><a class="choice" href="#vendor2-ok">その場で契約せず、契約先やメーカーに相談する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor2-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>不安や値引きの期限で判断を急がされても、その場で契約を決める必要はありません。</p>
+<p>交換の必要性を、信頼できる別の窓口に確かめましょう。</p><a class="choice primary" href="#vendor3">次へ</a></section>
+<section id="vendor2-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>不安や値引きの期限で判断を急がされても、その場で契約を決める必要はありません。</p>
+<p>交換の必要性を、信頼できる別の窓口に確かめましょう。</p></div><a class="choice primary" href="#vendor2">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor3" class="scene"><small>点検業者を名乗る訪問 · 場面 3 / 3</small><h1>名刺をもらったあと</h1><p>業者は「名刺の番号に聞けば確認できます」と言います。確認先はどう選びますか？</p><a class="choice" href="#vendor3-ok">以前の契約書や請求書から、契約先の連絡先を調べる</a><a class="choice" href="#vendor3-retry">名刺に書かれた番号だけに電話する</a><a class="choice" href="#vendor3-retry">名刺がきれいなので確認を省く</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendor3-ok" class="scene"><small>振り返り</small><h1>立ち止まって確認できました</h1><p>名刺だけでは身元を確かめきれません。以前の契約書や請求書など、訪問した相手とは別に持っている情報から確認先を探しましょう。</p><a class="choice primary" href="#vendorDone">次へ</a></section>
+<section id="vendor3-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>名刺だけでは身元を確かめきれません。以前の契約書や請求書など、訪問した相手とは別に持っている情報から確認先を探しましょう。</p></div><a class="choice primary" href="#vendor3">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="cityDone" class="scene"><small>練習完了</small><h1>急がず、自分で確かめる</h1><p>「今日まで」と言われても、いったん切って確認する練習ができました。</p><blockquote>「市役所に確認してから、手続きします」</blockquote><a class="choice primary" href="#city1">もう一度練習する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="vendorDone" class="scene"><small>練習完了</small><h1>ドアを開ける前に確認する</h1><p>突然の訪問でも、自分で確認してから対応を決められます。</p><blockquote>「契約先に確認します。今日はお引き取りください」</blockquote><a class="choice primary" href="#vendor1">もう一度練習する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeMenu" class="scene"><small>練習を選ぶ</small><h1>警察を名乗る相手</h1><a class="choice primary" href="#call">電話 · ３場面</a><a class="choice primary" href="#policeVisit1">訪問 · ２場面</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeVisit1" class="scene"><small>警察を名乗る訪問 · 場面 1 / 2</small><h1>玄関のチャイムが鳴った</h1><p>警察官を名乗る人が、玄関先で話をしたいと言っています。まずどうしますか？</p><a class="choice" href="#policeVisit1-retry">警察と名乗ったのでドアを開ける</a><a class="choice" href="#policeVisit2">ドアを開けず、インターホン越しに所属と用件を聞く</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeVisit1-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>肩書きだけで判断せず、ドアを閉めたまま用件を確認できます。</p></div><a class="choice primary" href="#policeVisit1">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeVisit2" class="scene"><small>警察を名乗る訪問 · 場面 2 / 2</small><h1>どこに確認する？</h1><p>所属先を聞きました。訪問が本物か、どう確かめますか？</p><a class="choice" href="#policeVisitDone">警察署の代表番号を自分で調べ、訪問について聞く</a><a class="choice" href="#policeVisit2-retry">訪問者が教えた番号だけに電話する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeVisit2-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>相手が用意した番号だけでは身元を確かめられません。自分で調べた警察署の窓口に確認しましょう。</p></div><a class="choice primary" href="#policeVisit2">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="sales1" class="scene"><small>押し売り · 場面 1 / 2</small><h1>「景品だけでも受け取って」</h1><p>突然来た訪問販売員が景品を差し出しています。商品を買うつもりがないとき、どうしますか？</p><a class="choice" href="#sales1-retry">とりあえず開けて景品を受け取る</a><a class="choice" href="#sales2">ドアを開けず「必要ありません」と伝える</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="sales1-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>買うつもりがなければ、インターホン越しに断って会話を終えられます。</p></div><a class="choice primary" href="#sales1">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="sales2" class="scene"><small>押し売り · 場面 2 / 2</small><h1>断っても勧誘が続く</h1><p>「説明だけでも」と引き下がりません。どうしますか？</p><a class="choice" href="#salesDone">「契約しません。お帰りください」と伝える</a><a class="choice" href="#sales2-retry">帰ってもらうために契約する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="sales2-retry" class="scene warning"><div class="warning-box"><strong class="warning-label">⚠ 注意</strong><small>もう一度考えてみよう</small><h1>ここで立ち止まれます</h1><p>帰ってもらうために契約する必要はありません。会話を終え、困ったときは信頼できる人や消費生活センターに相談できます。</p></div><a class="choice primary" href="#sales2">選び直す</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="policeVisitDone" class="scene"><small>練習完了</small><h1>開ける前に、自分で確認</h1><blockquote>「ドアは開けずに、こちらから警察署に確認します」</blockquote><a class="choice primary" href="#policeVisit1">もう一度練習する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="salesDone" class="scene"><small>練習完了</small><h1>短い一言で断る</h1><blockquote>「必要ありません。契約しません。お帰りください」</blockquote><p>家族と一緒に、声に出して練習してみましょう。</p><a class="choice primary" href="#sales1">もう一度練習する</a><a class="choice" href="#start">練習を選ぶ画面に戻る</a></section>
+<section id="start" class="scene"><small>家族でできる詐欺対策</small><h1>いったん切ろう</h1><p>電話や突然の訪問に、どう対応する？ ６つのシナリオで練習します。</p>
+<p>１つずつ、落ち着いて進めてください。</p><p>親が詐欺の被害に遭ったことをきっかけに、家族で練習できるアプリを考えました。</p><a class="choice primary" href="#policeMenu">警察を名乗る相手 · 電話／訪問</a>
+<a class="choice primary" href="#prosecutor">検察を名乗る電話 · ３場面</a><a class="choice primary" href="#city1">市役所を名乗る電話 · ３場面</a><a class="choice primary" href="#vendor1">点検業者を名乗る訪問 · ３場面</a><a class="choice primary" href="#sales1">押し売り · 訪問 · ２場面</a></section></article>
+<footer><p>練習用の架空シナリオです。</p><details><summary>参考にした公的な注意喚起</summary><p><a href="https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/241218/02.html">警察庁 · ニセ警察詐欺</a></p><p><a href="https://www.npa.go.jp/bureau/safetylife/sos47/case/refund/">警察庁 · 還付金詐欺</a></p><p><a href="https://www.kokusen.go.jp/mimamori/mj_mailmag/mj-shinsen478.html">国民生活センター · 給湯器の点検商法</a></p><p><a href="https://sumida-city.site.ktaiwork.jp/?p=2845">墨田区 · 警察官をかたる訪問</a></p><p><a href="https://www.kokusen.go.jp/wko/pdf/wko-202503_01.pdf">国民生活センター · 訪問販売への対応</a></p></details></footer>
+
+</main>
+
+</html>
